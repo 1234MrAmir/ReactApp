@@ -1,0 +1,28 @@
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+const NotesSchema = new Schema({
+
+    // foreign key ,we'll understand it after
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User'
+    },
+    
+    title:{
+        type: String,
+        require: true
+    },
+    description:{
+        type: String,
+        require: true,       
+    },
+    tag:{
+        type: String,
+        default: "General"
+    },
+    date:{
+        type: Date,
+        default: Date.now
+    }
+  });
+  module.exports = mongoose.model('notes', NotesSchema)
